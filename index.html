@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="JsBarcode.all.min.js"></script>
+
+</head>
+
+<body>
+    >
+    <!-- <canvas id="barcode"></canvas> -->
+    <script>
+        const { DOMImplementation, XMLSerializer } = require('xmldom');
+        const xmlSerializer = new XMLSerializer();
+        const document = new DOMImplementation().createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+        const svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+        JsBarcode(svgNode, 'test', {
+            xmlDocument: document,
+        });
+
+        const svgText = xmlSerializer.serializeToString(svgNode);
+    </script>
+</body>
+
+</html>
